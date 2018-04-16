@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.list-option {
+  list-style: none;
+}
+
+.selected {
+  background-color: skyblue;
+}
+
+.select-box {
+  margin-top: 20px;
+  width: 150px;
+}

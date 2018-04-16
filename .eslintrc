@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "space-before-function-paren": 0
+  }
+}
