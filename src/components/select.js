@@ -7,7 +7,7 @@ export default class SelectBox extends Component {
     optionsAreVisible: false,
     selectedIndex: -1,
     selectedValue: '',
-    filteredValue: ''
+    filter: ''
   }
   
   toggleSelectHandler = () => {
@@ -20,7 +20,7 @@ export default class SelectBox extends Component {
     this.setState({
       selectedIndex: parseInt(idx),
       selectedValue: selectedValue,
-      filteredValue: selectedValue,
+      filter: selectedValue,
       optionsAreVisible: false
     })
   }
@@ -31,45 +31,45 @@ export default class SelectBox extends Component {
   }
   
   filterOptionsHandler = (e) => {
-    let searchValue = e.target.value
-    let filteredValues = optionsArray.filter((option) => {
-      return option.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
-    })
-    this.setState({ filteredValue : filteredValues})
-    console.log(filteredValues)
+    const filter = e.target.value
+    this.setState({ filter })
   }
   
   render() {
-    const { optionsAreVisible, selectedIndex, selectedValue, filteredValue } = this.state
+    const { optionsAreVisible, selectedIndex, selectedValue, filter } = this.state
     
-    const options = optionsAreVisible ? optionsArray.map((option, idx) => {
-      const isSelected = idx === selectedIndex
-      let className = "list-option"
-    
-      if (isSelected){
-        className = isSelected ? "list-option selected" : "list-option"
-      }
+    const options = optionsArray
+      .filter((option) => {
+        return option.toLowerCase().indexOf(filter.toLowerCase()) !== -1
+      })
+      .map((option, idx) => {
+        const isSelected = idx === selectedIndex
+        let className = "list-option"
+      
+        if (isSelected){
+          className = isSelected ? "list-option selected" : "list-option"
+        }
   
-      return (
-        <li
-          className={className}
-          data-idx={idx}
-          data-value={option}
-          key={option}
-          value={option}
-          onClick={this.selectOptionHandler}
-          onMouseEnter={this.mouseEnterEventListener}
-        >
-          {option}
-        </li>
-      )
-    }) : null
+        return (
+          <li
+            className={className}
+            data-idx={idx}
+            data-value={option}
+            key={option}
+            value={option}
+            onClick={this.selectOptionHandler}
+            onMouseEnter={this.mouseEnterEventListener}
+          >
+            {option}
+          </li>
+        )
+    })
     
     return (
       <div>
         <input
           type="text"
-          value={filteredValue}
+          value={filter}
           className="select-box"
           onChange={this.filterOptionsHandler}
           onClick={this.toggleSelectHandler}>
