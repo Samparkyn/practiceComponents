@@ -68,7 +68,7 @@ export default class SelectBox extends Component {
       })
       
       list = (
-        <ul>
+        <ul className="options-container">
           {options}
         </ul>
       )
@@ -76,14 +76,16 @@ export default class SelectBox extends Component {
     
     return (
       <div>
-        <input
-          type="text"
-          value={filter}
-          className="select-box"
-          onChange={this.filterOptionsHandler}
-          onClick={this.toggleSelectHandler}>
-        </input>
-        {list}
+        <div className="select-container">
+          <input
+            type="search"
+            value={filter}
+            className="select-box"
+            onChange={this.filterOptionsHandler}
+            onClick={this.toggleSelectHandler}>
+          </input>
+          {list}
+        </div>
       </div>
     );
   }

@@ -6,6 +6,7 @@ body {
 
 .list-option {
   list-style: none;
+  font-size: 18px;
 }
 
 .selected {
@@ -13,6 +14,27 @@ body {
 }
 
 .select-box {
-  margin-top: 20px;
-  width: 150px;
+  width: 100%;
+}
+
+.options-container {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  right: 0;
+  left: 0;
+  top: 30px;
+}
+
+.select-container {
+  position: relative;
+  width: 200px;
+  margin: auto;
+}
+
+.clear-input {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1;
+  text-align: center;
 }
